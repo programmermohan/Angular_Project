@@ -1,0 +1,162 @@
+Node_Module: The node_modules folder is a directory created by Node.js package managers like npm (Node Package Manager). 
+It contains all the packages (dependencies) your project requires to run.
+It includes packages specified in your package.json file, as well as their own dependencies.
+Each package can contain its own code, configuration files, and additional dependencies.
+
+package.json: package.json contains all the package entries which we are going to use in our project. it will contain the package name along with the version.
+Simple it will contain the packages which we need to run our angular application.
+
+angular.json: angular.json is like a configuration file of our angular project. It contains settings that control the behavior of the Angular application.
+
+Note: Angular is a single page application, we will have only single page which will be running all over the application so that page is inside the src folder (index.html).
+This file index.html will have a reference in angular.json file (nearly line 17).
+
+main.ts: main.ts is a execution point of our application so whenever angular application first starts so this is the file which get first executed.
+main.ts is the entry point file for an Angular application. It is responsible for bootstrapping the Angular application and initializing the root module
+Here we will be able to see the reference of app component.
+
+tsconfig.json: tsconfig file is just a configuration file of our typescript. It specifies the compiler options and the files to be included in the project.
+
+public: previously it was the folder (asset) but now in angular18 we have the public folder.
+public folder, which is used to store static files such as logo (png image), any other static file kind of that your application will serve to users.
+
+Now if we go inside the src
+styles.css: This file will contain all the CSS classes which we are going to use all over the project means kind of Global CSS we can put it over here.
+
+main.ts: main.ts is a file which will execute when our angular application first start. This is the starting point of our angular application.
+
+index.html: index.html is a single page application so there we can see app-root directive, so this directive is responsible to render our whole angular application.
+
+Note: Whatever code we write, it will be in our app folder.
+when we create any component, it will generate the four files
+it will have three mandatory files
+.html (Our UI template)
+.css (CSS style we can write here)
+.ts (Write the code here)
+There is another file spec.ts which we can use to write test cases.
+
+app.config.ts: app.config file or similar configuration file is typically used to centralize configuration settings for the application.
+Before angular18 it was app module file.
+
+app.route.ts: This is a routing file, where we are going to create the route.
+app.route.ts file is typically used to define and manage the application's routing configuration. This file specifies how different components are mapped to different routes in your application, allowing for navigation between views.
+
+API URL Swagger
+https://freeapi.miniprojectideas.com/index.html
+
+Note: Standalone components are Angular components that do not require being declared in an Angular module. They can be used independently and are designed to simplify the development process by reducing the need for extensive module management.
+
+from the standalone components whatever the imports we need, we can import in the ts file in component decorator section.
+
+Few Data Types: string, number, Boolean, date, object, array, null, undefined
+
+Selector: Selector is something by which we can call or render a component into another component.
+Now suppose we want to render role component in the app component, so what we need to do. first import the role component in the app.component.ts file.
+
+Data Binding:
+1) Interpolation Binding {{}}
+2) Property Binding []
+3) Two way data binding [(ngModel)]
+
+When we use interpolation, when inside any element we just need to print the data. 
+But if want to provide a value to any property so we will wrap that property into square [] bracket
+
+Two way binding we can do on the input element
+
+For display - use Interpolation
+Input element we can property binding or two way binding (ngModel)
+two way data binding we will use on the input element
+
+Event Binding: 
+
+Directive => Structural, Attribute
+Structural Directive: directive which is responsible to change the structure of the DOM. we have ngIf, ngFor in the structural directive
+Attribute Directive: a directive which can add extra behaviour to the existing element
+we have ngClass, ngStyle for the attribute directive.
+
+Structural directive will start from the * like *ngIf
+
+Before we make any API call, app.config.ts we have to import the
+provideHttpClient like as below
+import { provideHttpClient } from '@angular/common/http'; and add provideHttpClient same in providers as shown below
+export const appConfig: ApplicationConfig = {
+  providers: [provideHttpClient(), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+};
+
+Previous version we have the httpclient module but in angular18 it is deprecated.
+
+*ngFor we have to use when we have iterate some elements. like foreach loop
+
+Services: normally we don't make API call in the component, services are nothing but a class where we can keep our reusable code or code, or function which we are going to use in our overall the project.
+
+Router-outlet is a directive which is responsible to render activated route means whatever the URL we have in the URL last one that (component) will render.
+
+routerlink, routerlinkactive
+
+Template Variable: We create like for validation in the form
+personname (#personName = “ngModel”)
+
+
+Template Form
+Reactive Form
+
+Pipe - Pipe is used to format the data in the HTML.
+There are some default pipe and we can create our own custom pipe
+
+Async Pipe
+Json Pipe
+
+Generally we write and API call, and we subscribe, then store the output data in a variable and then that variable we use it in the HTML but instead of that we can directly subscribe the response from that API call in the HTML only by using async pipe
+Async pipe is like we can subscribe to the observable.
+
+Constant
+
+input and output reusable component, how do we create reusable component
+
+Signal in Angular 18 : The way we create a variable in angular, its similar.
+signal we use to use method() to read
+firstName = signal("Angular 18"); now while reading {{firstName()}}
+
+Benefit of using Signal
+in AppConfig.ts, we have something provideZoneChangeDetection like as below
+
+providers: [provideHttpClient(), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+so to read the change detection, we are not depend on the zone.js now we are using signal.
+Whenever the value changes, Angular will only re-render the affected part of the UI, ensuring efficient updates.
+
+
+Reusable Component.
+
+From parent we can send the data as input
+ @Input() alertType: string = ''
+  @Input() message : string = ''
+
+So if we have to send data child to parent then we have to use the output.
+
+Data Binding
+Template Form
+Routing
+Reactive form
+Service
+Pipe
+Interface and Class
+Input and output
+
+
+Local Storage
+Local storage CRUD
+Guard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
